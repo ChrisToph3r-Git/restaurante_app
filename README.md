@@ -6,8 +6,7 @@ Christopher Leonardo Paredes Jiménez
 
 ## Descripción
 
-Este proyecto fue desarrollado en Python utilizando Programación Orientada a Objetos (POO). El sistema permite registrar productos y clientes de un restaurante aplicando conceptos fundamentales como clases, objetos, atributos, métodos, constructores, método especial **str**() y organización modular del software.
-
+Esta tarea práctica aplica la modularización del software para organizar el código en componentes independientes a través de este sistema, se gestiona el registro de productos y clientes de un restaurante, implementando conceptos fundamentales de la Programación Orientada a Objetos (POO) como clases, objetos, atributos, métodos, constructores y el método especial __str__().
 ## Estructura del Proyecto
 
 ```text
