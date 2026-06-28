@@ -1,22 +1,28 @@
 from modelos.producto import Producto
+from modelos.cliente import Cliente
 from servicios.restaurante import Restaurante
 
 def main():
-    # 1. Creamos el servicio principal
+
     mi_restaurante = Restaurante()
 
-    # 2. Creamos los objetos Producto de forma correcta
     p1 = Producto("Pizza Familiar", 15.50, "Comida", True)
     p2 = Producto("Jugo de Naranja", 3.00, "Bebida", True)
-    p3 = Producto("Hamburguesa Doble", 8.50, "Comida", True)
 
-    # 3. Los agregamos al servicio usando las listas
+    c1 = Cliente("Juan Pérez", 987654321, "juan@gmail.com", True)
+    c2 = Cliente("María López", 912345678, "maria@gmail.com", True)
+
     mi_restaurante.agregar_producto(p1)
     mi_restaurante.agregar_producto(p2)
-    mi_restaurante.agregar_producto(p3)
 
-    # 4. Mostramos la información organizada
+    mi_restaurante.agregar_cliente(c1)
+    mi_restaurante.agregar_cliente(c2)
+
+    print("=== PRODUCTOS ===")
     mi_restaurante.mostrar_productos()
+
+    print("\n=== CLIENTES ===")
+    mi_restaurante.mostrar_clientes()
 
 if __name__ == "__main__":
     main()

@@ -1,8 +1,8 @@
 class Restaurante:
 
     def __init__(self):
-        self.productos = []
-        self.clientes = []
+        self.productos: list = []
+        self.clientes: list = []
 
     def agregar_producto(self, producto):
         self.productos.append(producto)
