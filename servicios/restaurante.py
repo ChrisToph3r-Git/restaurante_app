@@ -1,19 +1,17 @@
+# Clase que administra los productos del restaurante
 class Restaurante:
 
+    # Inicializa la lista de productos
     def __init__(self):
-        self.productos: list = []
-        self.clientes: list = []
+        self.productos = []
 
+    # Agrega un producto a la lista
     def agregar_producto(self, producto):
         self.productos.append(producto)
 
-    def agregar_cliente(self, cliente):
-        self.clientes.append(cliente)
-
+    # Muestra todos los productos registrados
     def mostrar_productos(self):
-        for producto in self.productos:
-            print(producto)
+        print("\n=== PRODUCTOS DEL RESTAURANTE ===\n")
 
-    def mostrar_clientes(self):
-        for cliente in self.clientes:
-            print(cliente)
+        for producto in self.productos:
+            producto.mostrar_informacion()

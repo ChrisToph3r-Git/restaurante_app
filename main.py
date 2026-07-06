@@ -1,28 +1,28 @@
-from modelos.producto import Producto
-from modelos.cliente import Cliente
+from modelos.platillo import Platillo
+from modelos.bebida import Bebida
 from servicios.restaurante import Restaurante
 
-def main():
+mi_restaurante = Restaurante()
 
-    mi_restaurante = Restaurante()
+# Creamos los platillos
+platillo1 = Platillo("Hamburguesa", 6.50, True, 750)
+platillo2 = Platillo("Pizza", 8.00, True, 900)
 
-    p1 = Producto("Pizza Familiar", 15.50, "Comida", True)
-    p2 = Producto("Jugo de Naranja", 3.00, "Bebida", True)
+# Creamos las bebidas
+bebida1 = Bebida("Coca Cola", 1.50, True, 500)
+bebida2 = Bebida("Jugo Natural", 2.00, False, 350)
 
-    c1 = Cliente("Juan Pérez", 987654321, "juan@gmail.com", True)
-    c2 = Cliente("María López", 912345678, "maria@gmail.com", True)
+# Agregamos los productos al restaurante
+mi_restaurante.agregar_producto(platillo1)
+mi_restaurante.agregar_producto(platillo2)
+mi_restaurante.agregar_producto(bebida1)
+mi_restaurante.agregar_producto(bebida2)
 
-    mi_restaurante.agregar_producto(p1)
-    mi_restaurante.agregar_producto(p2)
+# Mostrar todos los productos
+mi_restaurante.mostrar_productos()
 
-    mi_restaurante.agregar_cliente(c1)
-    mi_restaurante.agregar_cliente(c2)
+# Modificamos el precio de un producto
+platillo1.cambiar_precio(7.00)
 
-    print("=== PRODUCTOS ===")
-    mi_restaurante.mostrar_productos()
-
-    print("\n=== CLIENTES ===")
-    mi_restaurante.mostrar_clientes()
-
-if __name__ == "__main__":
-    main()
+print("Precio actualizado:")
+print(platillo1.obtener_precio())
