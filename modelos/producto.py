@@ -1,25 +1,58 @@
-# Clase padre que representa un producto del restaurante
 class Producto:
+    """Clase que representa un producto del restaurante."""
 
-    # Constructor de la clase
-    def __init__(self, nombre, precio, disponible=True):
+    def __init__(self, nombre, categoria, precio, disponible=True):
         self.nombre = nombre
-        self.__precio = precio      # Atributo encapsulado
+        self.categoria = categoria
+        self.precio = precio
         self.disponible = disponible
 
-    # Aqui devolvera el precio del producto
-    def obtener_precio(self):
-        return self.__precio
+    # Propiedad: nombre
+    @property
+    def nombre(self):
+        return self._nombre
 
-    # Cambia el precio validando que sea mayor que cero
-    def cambiar_precio(self, nuevo_precio):
-        if nuevo_precio > 0:
-            self.__precio = nuevo_precio
-        else:
-            print("Error: El precio debe ser mayor que cero.")
+    @nombre.setter
+    def nombre(self, valor):
+        if not valor or valor.strip() == "":
+            raise ValueError("Error: El nombre del producto no puede estar vacío.")
+        self._nombre = valor
 
-    # Este método será sobrescrito por las clases hijas
+    # Propiedad: categoría
+    @property
+    def categoria(self):
+        return self._categoria
+
+    @categoria.setter
+    def categoria(self, valor):
+        if not valor or valor.strip() == "":
+            raise ValueError("Error: La categoría no puede estar vacía.")
+        self._categoria = valor
+
+    # Propiedad: precio
+    @property
+    def precio(self):
+        return self._precio
+
+    @precio.setter
+    def precio(self, valor):
+        try:
+            valor = float(valor)
+        except ValueError:
+            raise ValueError("Error: El precio debe ser un número.")
+
+        if valor <= 0:
+            raise ValueError("Error: El precio debe ser mayor que cero.")
+
+        self._precio = valor
+
     def mostrar_informacion(self):
-        print(f"Producto: {self.nombre}")
-        print(f"Precio: ${self.__precio}")
-        print(f"Disponible: {self.disponible}")
+        """Muestra los datos del producto."""
+        estado = "Disponible" if self.disponible else "Agotado"
+        print(
+            f"Producto: {self.nombre} | "
+            f"Categoría: {self.categoria} | "
+            f"Precio: ${self.precio:.2f} | "
+            f"Estado: {estado}"
+        )
+        
