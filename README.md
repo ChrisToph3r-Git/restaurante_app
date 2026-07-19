@@ -1,16 +1,16 @@
-#  Organización modular de un sistema orientado a objetos en Python
+# Aplicación de los principios SOLID en un Restaurante en Python
 
 ## Autor
 
-**Christopher Leonardo Paredes Jiménez**
+Christopher Leonardo Paredes Jiménez
 
 ---
 
 ## Descripción
 
-Este proyecto fue desarrollado para la asignatura de Programación Orientada a Objetos, el sistema permite registrar, listar y buscar productos y clientes de un restaurante mediante un menú interactivo en consola.
+Este proyecto fue desarrollado para la asignatura de Programación Orientada a Objetos. El sistema permite registrar productos, bebidas y clientes mediante un menú interactivo ejecutado desde consola.
 
-Durante el desarrollo se aplican conceptos como constructores, encapsulación con `@property` y `@setter`, el uso de `@dataclass`, programación modular y la creación de objetos a partir de datos ingresados por el usuario.
+El objetivo principal es demostrar la aplicación de los principios SOLID utilizando una estructura modular en Python. El proyecto está organizado en clases independientes que cumplen responsabilidades específicas, facilitando el mantenimiento y la ampliación del sistema.
 
 ---
 
@@ -19,11 +19,10 @@ Durante el desarrollo se aplican conceptos como constructores, encapsulación co
 ```text
 restaurante_app/
 ├── modelos/
-│   ├── __init__.py
 │   ├── producto.py
+│   ├── bebida.py
 │   └── cliente.py
 ├── servicios/
-│   ├── __init__.py
 │   └── restaurante.py
 ├── main.py
 └── README.md
@@ -31,68 +30,55 @@ restaurante_app/
 
 ---
 
-## Descripción de las carpetas
+## Responsabilidad de las clases
 
-### modelos/
-
-Contiene las clases principales del sistema.
-
-- **Producto:** representa los productos del restaurante y utiliza constructor, `@property` y `@setter`.
-- **Cliente:** representa los clientes registrados y está implementado mediante `@dataclass`.
-
-### servicios/
-
-Contiene la clase *Restaurante*, encargada de administrar las listas de productos y clientes, además de registrar, listar y buscar información.
-
-### main.py
-
-Es el punto de inicio del programa. Presenta un menú interactivo que permite al usuario ingresar datos desde el teclado y crear los objetos del sistema.
+- **Producto:** Representa un producto del restaurante.
+- **Bebida:** Hereda de Producto y agrega atributos como tamaño y tipo de envase.
+- **Cliente:** Representa un cliente registrado.
+- **Restaurante:** Administra los productos y clientes del sistema.
+- **main.py:** Gestiona el menú interactivo y la entrada de datos.
 
 ---
 
-## Uso del constructor
+## Relación entre Producto y Bebida
 
-La clase **Producto** utiliza el constructor `__init__()` para crear cada producto con su nombre, categoría, precio y disponibilidad, cada vez que el usuario registra un producto desde el menú, se crea un nuevo objeto utilizando este constructor.
-
----
-
-## Uso de @property y @setter
-
-Se utilizaron `@property` y `@setter` para controlar el acceso a los atributos del producto.
-
-Las validaciones implementadas permiten comprobar que:
-
-- El nombre no esté vacío.
-- La categoría no esté vacía.
-- El precio sea mayor que cero.
+La clase Bebida hereda de Producto, por lo que puede utilizarse como un producto común y almacenarse en la misma colección del sistema.
 
 ---
 
-## Uso de @dataclass
+## Principios SOLID aplicados
 
-La clase **Cliente** fue implementada utilizando `@dataclass`, lo que permite crear automáticamente el constructor y facilita el manejo de los datos del cliente.
+- **SRP:** Cada clase cumple una responsabilidad específica.
+- **OCP:** El sistema se amplía mediante la clase Bebida sin modificar la lógica principal.
+- **LSP:** Los objetos Bebida pueden utilizarse como objetos Producto.
 
 ---
 
 ## Menú interactivo
 
-El programa presenta un menú que permite realizar las siguientes operaciones:
+El sistema presenta el siguiente menú:
 
-- Registrar productos.
-- Listar productos.
-- Buscar productos.
-- Registrar clientes.
-- Listar clientes.
-- Buscar clientes.
-- Salir del sistema.
+```text
+========================================
+      SISTEMA DE RESTAURANTE
+========================================
+1. Registrar producto
+2. Registrar bebida
+3. Registrar cliente
+----------------------------------------
+4. Listar productos
+5. Listar clientes
+----------------------------------------
+6. Salir
+```
 
-Toda la información es ingresada mediante `input()`, evitando utilizar datos definidos directamente en el código.
+Toda la información es ingresada por el usuario mediante input().
 
 ---
 
 ## Ejecución del programa
 
-Desde la terminal, ubicarse dentro de la carpeta del proyecto y ejecutar:
+Ejecutar el archivo principal desde la terminal:
 
 ```bash
 python main.py
@@ -102,4 +88,6 @@ python main.py
 
 ## Reflexión
 
-Este proyecto me permitió comprender mejor cómo los constructores permiten crear objetos a partir de los datos ingresados por el usuario. Además, aprendí la utilidad de `@property`, `@setter` y `@dataclass`, así como la importancia de utilizar un menú interactivo para facilitar el registro y la búsqueda de información. Todo esto me ayudó a organizar mejor el código y a aplicar los principios de la Programación Orientada a Objetos mediante una estructura modular.
+El desarrollo de este proyecto me permitió comprender la importancia de diseñar programas mantenibles y organizados utilizando Programación Orientada a Objetos. La aplicación de los principios SOLID facilita la reutilización del código, mejora la organización de las responsabilidades y permite ampliar las funcionalidades del sistema sin afectar los componentes ya implementados.
+
+Además, pude comprender cómo la herencia y el polimorfismo contribuyen a desarrollar aplicaciones más flexibles y fáciles de mantener en proyectos modulares de Python.
